@@ -237,7 +237,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(), loss=tf.keras.losses.SparseC
 # In[25]:
 
 
-get_ipython().run_cell_magic('time', '', 'history = model.fit(ds_train, validation_data=ds_valid, epochs=NUMEPOCHS, shuffle=True)\n')
+history = model.fit(ds_train, validation_data=ds_valid, epochs=NUMEPOCHS, shuffle=True)
 
 
 # In[26]:
