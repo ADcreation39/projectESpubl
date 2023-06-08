@@ -250,7 +250,7 @@ model.save('eurosat_classifier.h5', overwrite=True, include_optimizer=True, save
 
 
 hist = history.history
-print("Produzione e salvataggio dei plot di loss e accuracy)
+print("Produzione e salvataggio dei plot di loss e accuracy")
 x_arr = np.arange(len(hist['loss'])) + 1
 fig = plt.figure(figsize=(12, 4))
 ax = fig.add_subplot(1, 2)
