@@ -312,7 +312,7 @@ tf.print(predicted_probabilities.shape)
 predicted_label=tf.math.argmax(predicted_probabilities, axis=1).numpy()  #axis is the axis to reduce across. Default to 0.
 label_probabilities=np.zeros(len(predicted_label)
 for k in range(len(predicted_label)):
-    label_probabilities[k]=(predicted_probabilities[k][predicted_label[k]] 
+    label_probabilities[k]=predicted_probabilities[k][predicted_label[k]] 
 
 print("Visualizziamo i risultati relativi a %d immagini del test set:" %M)
 ds_M_results = ds_results.take(M)
