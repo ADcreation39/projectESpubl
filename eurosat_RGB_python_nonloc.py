@@ -12,13 +12,13 @@
 
 
 #Se ci sono problemi fai il restart del kernel
-pip install --upgrade pip
+!pip install --upgrade pip
 
 
 # In[3]:
 
 
-pip install scikit-learn
+!pip install scikit-learn
 
 
 # In[5]:
@@ -43,25 +43,25 @@ tf.debugging.set_log_device_placement(True)
 # In[7]:
 
 
-pip install tensorflow-datasets
+!pip install tensorflow-datasets
 
 
 # In[8]:
 
 
-pip install numpy
+!pip install numpy
 
 
 # In[9]:
 
 
-pip install pandas
+!pip install pandas
 
 
 # In[10]:
 
 
-pip install matplotlib
+!pip install matplotlib
 
 
 # In[11]:
