@@ -377,7 +377,7 @@ for i,(image,label) in enumerate(ds_M_results):
         true_string='River'
     else:
         true_string='SeaLake'
-    ax.set_title('{:s} ({:d})'.format(true_string, label), size=10)
+    ax.set_title('{:s} ({:d})'.format(true_string, int(label)), size=10)
     if predicted_label[i]==0:
         predicted_string='AnnualCrop'
     elif predicted_label[i]==1:
@@ -439,7 +439,7 @@ for i,(image,label) in enumerate(ds_results):
             true_string='River'
         else:
             true_string='SeaLake'
-        ax.set_title('{:s} ({})'.format(true_string, label), size=10)
+        ax.set_title('{:s} ({:d})'.format(true_string, int(label)), size=10)
         if predicted_label[i]==0:
             predicted_string='AnnualCrop'
         elif predicted_label[i]==1:
