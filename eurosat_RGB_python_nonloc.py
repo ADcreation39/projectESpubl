@@ -418,7 +418,7 @@ fig_t_2=plt.figure(figsize=(15, 12))                  #modifica se K viene modif
 counter=0
 for i,(image,label) in enumerate(ds_results):
     if predicted_label[i]!=label:  
-        ax = fig_t_2.add_subplot(5, 5, i+1)       #modifica se K viene modificato
+        ax = fig_t_2.add_subplot(5, 5, counter+1)       #modifica se K viene modificato
         ax.set_xticks([]); ax.set_yticks([])
         ax.imshow(image)
         if label==0:
