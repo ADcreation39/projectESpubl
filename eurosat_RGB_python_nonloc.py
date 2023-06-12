@@ -419,6 +419,7 @@ counter=0
 for i,(image,label) in enumerate(ds_results):
     if predicted_label[i]!=label:  
         ax = fig_t_2.add_subplot(5, 5, counter+1)       #modifica se K viene modificato
+        print(counter)
         ax.set_xticks([]); ax.set_yticks([])
         ax.imshow(image)
         if label==0:
