@@ -349,7 +349,7 @@ print("Predicted probabilities vector length: %d" %len(predicted_label))
 for k in range(len(predicted_label)):
     label_probabilities[k]=predicted_probabilities[k][predicted_label[k]] 
 
-print("Visualizziamo i risultati relativi a %d immagini del test set:" %M)
+print("Visualizziamo i risultati relativi a %d immagini del test set." %M)
 ds_results=ds_test.unbatch()
 ds_M_results = ds_results.take(M)
 
@@ -413,6 +413,7 @@ plt.savefig("samples_from_test.pdf", format="pdf", bbox_inches="tight")
 
 #Plotting the first K=25 mismatched images along with their predictions
 K=25
+print("Visualizziamo i primi %d elementi non classificati correttamente del test set." %K)
 fig_t_2=plt.figure(figsize=(15, 12))                  #modifica se K viene modificato
 counter=0
 for i,(image,label) in enumerate(ds_results):
