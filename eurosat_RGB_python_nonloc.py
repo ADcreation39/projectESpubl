@@ -341,9 +341,6 @@ outfile.close()
 #Vediamo i risultati per M=25 elementi del test set
 M=25
 
-ds_results = ds_test.unbatch()
-print("CCC")
-#images_results=ds_results.map(lambda x, y: x)
 predicted_probabilities=model.predict(ds_test)  #returns a numpy array
 tf.print(predicted_probabilities.shape)
 predicted_label=tf.math.argmax(predicted_probabilities, axis=1).numpy()  #axis is the axis to reduce across. Default to 0.
@@ -354,9 +351,9 @@ for k in range(len(predicted_label)):
 print("Visualizziamo i risultati relativi a %d immagini del test set:" %M)
 ds_M_results = ds_results.take(M)
 
-fig = plt.figure(figsize=(15, 12))             #modifica se M viene modificato
+fig_t_1 = plt.figure(figsize=(15, 12))             #modifica se M viene modificato
 for i,(image,label) in enumerate(ds_M_results):
-    ax = fig.add_subplot(5, 5, i+1)            #modifica se M viene modificato
+    ax = fig_t_1.add_subplot(5, 5, i+1)            #modifica se M viene modificato
     ax.set_xticks([]); ax.set_yticks([])
     ax.imshow(image)
     if label==0:
@@ -379,7 +376,7 @@ for i,(image,label) in enumerate(ds_M_results):
         true_string='River'
     else:
         true_string='SeaLake'
-    ax.set_title('{:s} ({})'.format(true_string, label), size=10)
+    ax.set_title('{:s} ({:d})'.format(true_string, label), size=10)
     if predicted_label[i]==0:
         predicted_string='AnnualCrop'
     elif predicted_label[i]==1:
@@ -414,11 +411,11 @@ plt.savefig("samples_from_test.pdf", format="pdf", bbox_inches="tight")
 
 #Plotting the first K=25 mismatched images along with their predictions
 K=25
-plt.figure(figsize=(15, 12))                  #modifica se K viene modificato
+fig_t_2=plt.figure(figsize=(15, 12))                  #modifica se K viene modificato
 counter=0
 for i,(image,label) in enumerate(ds_results):
     if predicted_label[i]!=label:  
-        ax = fig.add_subplot(5, 5, i+1)       #modifica se K viene modificato
+        ax = fig_t_2.add_subplot(5, 5, i+1)       #modifica se K viene modificato
         ax.set_xticks([]); ax.set_yticks([])
         ax.imshow(image)
         if label==0:
