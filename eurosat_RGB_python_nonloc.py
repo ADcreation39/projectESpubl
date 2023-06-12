@@ -350,7 +350,8 @@ for k in range(len(predicted_label)):
     label_probabilities[k]=predicted_probabilities[k][predicted_label[k]] 
 
 print("Visualizziamo i risultati relativi a %d immagini del test set:" %M)
-ds_M_results = ds_test.unbatch().take(M)
+ds_results=ds_test.unbatch()
+ds_M_results = ds_results.take(M)
 
 fig_t_1 = plt.figure(figsize=(15, 12))             #modifica se M viene modificato
 for i,(image,label) in enumerate(ds_M_results):
