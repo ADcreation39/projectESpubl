@@ -342,6 +342,7 @@ outfile.close()
 M=25
 
 ds_results = ds_test.unbatch()
+print("AAA")
 #images_results=ds_results.map(lambda x, y: x)
 predicted_probabilities=model.predict(ds_results)  #returns a numpy array
 tf.print(predicted_probabilities.shape)
