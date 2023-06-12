@@ -342,8 +342,8 @@ outfile.close()
 M=25
 
 ds_results = ds_test.unbatch()
-images_results=ds_results.map(lambda x, y: x)
-predicted_probabilities=model.predict(images_results)  #returns a numpy array
+#images_results=ds_results.map(lambda x, y: x)
+predicted_probabilities=model.predict(ds_results)  #returns a numpy array
 tf.print(predicted_probabilities.shape)
 predicted_label=tf.math.argmax(predicted_probabilities, axis=1).numpy()  #axis is the axis to reduce across. Default to 0.
 label_probabilities=np.zeros(len(predicted_label))
