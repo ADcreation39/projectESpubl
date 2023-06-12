@@ -124,7 +124,7 @@ while True:
     if BATCHSIZE<=0:
         raise ValueError("Numero inserito negativo o zero. Riprovare.\n")
 ds_nontest=ds_nontest_orig.map(lambda item: (tf.cast(item['image'], tf.float32)/255.0, tf.cast(item['label'], tf.float32))).shuffle(buffer_size=BUFFERSIZE, reshuffle_each_iteration=False)
-ds_test=ds_test_orig.map(lambda item: (tf.cast(item['image'], tf.float32)/255.0, tf.cast(item['label'], tf.float32))).batch(200)
+ds_test=ds_test_orig.map(lambda item: (tf.cast(item['image'], tf.float32)/255.0, tf.cast(item['label'], tf.float32))).batch(BATCHSIZE)
 ds_train = ds_nontest.take(trainlen).batch(BATCHSIZE)
 ds_valid = ds_nontest.skip(trainlen).batch(BATCHSIZE)
 
@@ -342,9 +342,9 @@ outfile.close()
 M=25
 
 ds_results = ds_test.unbatch()
-print("AAA")
+print("BBB")
 #images_results=ds_results.map(lambda x, y: x)
-predicted_probabilities=model.predict(ds_results)  #returns a numpy array
+predicted_probabilities=model.predict(ds_test)  #returns a numpy array
 tf.print(predicted_probabilities.shape)
 predicted_label=tf.math.argmax(predicted_probabilities, axis=1).numpy()  #axis is the axis to reduce across. Default to 0.
 label_probabilities=np.zeros(len(predicted_label))
