@@ -464,7 +464,7 @@ for i,(image,label) in enumerate(ds_results):
         else:
             predicted_string='SeaLake'
         ax.text(0.5, -0.15, '{:s} ({:d})\nProb={:.0f}%'.format(predicted_string, predicted_label[i], label_probabilities[i]*100), size=16, horizontalalignment='center',verticalalignment='center', transform=ax.transAxes, fontsize=9, fontweight='bold', color='red')
-    counter += 1
+        counter += 1
     if counter == K: 
         break
 plt.tight_layout()
