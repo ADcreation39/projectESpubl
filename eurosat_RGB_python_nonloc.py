@@ -294,7 +294,7 @@ if choice==1:
             print("Numero inserito non valido. Riprovare.")
         if ADDITIONALEPOCHS<=0:
             raise ValueError("Numero inserito negativo o zero. Riprovare.\n")
-    print(ADDITIONALEPOCHS)
+    
     history2 = model.fit(ds_train, validation_data=ds_valid, epochs=NUMEPOCHS+ADDITIONALEPOCHS, initial_epoch=NUMEPOCHS, shuffle=True)
     
     model.save('eurosat_classifier_augmented.h5', overwrite=True, include_optimizer=True, save_format='h5')
