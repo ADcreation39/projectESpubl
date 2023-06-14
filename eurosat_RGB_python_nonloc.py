@@ -335,7 +335,7 @@ outfile.write("Test accuracy: {}\n".format(scores[1]))
 outfile.write("Batch size: {}\n".format(BATCHSIZE))
 if choice==0:
     outfile.write("Number of epochs: {}\n".format(NUMEPOCHS))
-else
+else:
     outfile.write("Number of epochs: {}\n".format(NUMEPOCHS+ADDITIONALEPOCHS))
 outfile.close()
 
