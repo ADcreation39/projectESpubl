@@ -238,7 +238,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(), loss=tf.keras.losses.SparseC
 # In[25]:
 
 
-hist = model.fit(ds_train, validation_data=ds_valid, epochs=NUMEPOCHS, shuffle=True)
+history = model.fit(ds_train, validation_data=ds_valid, epochs=NUMEPOCHS, shuffle=True)
 
 
 # In[26]:
@@ -249,24 +249,24 @@ model.save('eurosat_classifier.h5', overwrite=True, include_optimizer=True, save
 # In[ ]:
 
 
-print(hist.history.keys())
+print(history.history.keys())
 
 # In[27]:
 
 
-history = hist.history
+hist = history.history
 print("Produzione e salvataggio dei plot di loss e accuracy")
-x_arr = np.arange(len(history['loss'])) + 1
+x_arr = np.arange(len(hist['loss'])) + 1
 fig_plot = plt.figure(figsize=(12, 4))
 ax = fig_plot.add_subplot(1, 2, 1)
-ax.plot(x_arr, history['loss'], '-o', label='Train loss')
-ax.plot(x_arr, history['val_loss'], '--<', label='Validation loss')
+ax.plot(x_arr, hist['loss'], '-o', label='Train loss')
+ax.plot(x_arr, hist['val_loss'], '--<', label='Validation loss')
 ax.legend(fontsize=15)
 ax.set_xlabel('Epoch', size=15)
 ax.set_ylabel('Loss', size=15)
 ax = fig_plot.add_subplot(1, 2, 2)
-ax.plot(x_arr, history['accuracy'], '-o', label='Train acc.')
-ax.plot(x_arr, history['val_accuracy'], '--<',label='Validation acc.')
+ax.plot(x_arr, hist['accuracy'], '-o', label='Train acc.')
+ax.plot(x_arr, hist['val_accuracy'], '--<',label='Validation acc.')
 ax.legend(fontsize=15)
 ax.set_xlabel('Epoch', size=15)
 ax.set_ylabel('Accuracy', size=15)
@@ -294,25 +294,26 @@ if choice==1:
             print("Numero inserito non valido. Riprovare.")
         if ADDITIONALEPOCHS<=0:
             raise ValueError("Numero inserito negativo o zero. Riprovare.\n")
-    hist2 = model.fit(ds_train, validation_data=ds_valid, epochs=ADDITIONALEPOCHS, initial_epoch=NUMEPOCHS, shuffle=True)
+    print(ADDITIONALEPOCHS)
+    history2 = model.fit(ds_train, validation_data=ds_valid, epochs=ADDITIONALEPOCHS, initial_epoch=NUMEPOCHS, shuffle=True)
     
     model.save('eurosat_classifier_augmented.h5', overwrite=True, include_optimizer=True, save_format='h5')
     
-    print(hist2.history.keys())
+    print(history2.history.keys())
     
-    history2 = hist2.history
+    hist2 = history2.history
     print("Produzione e salvataggio dei plot di loss e accuracy")
-    x_arr2 = np.arange(len(history2['loss'])) + 1
+    x_arr2 = np.arange(len(hist2['loss'])) + 1
     fig_plot2 = plt.figure(figsize=(12, 4))
     ax = fig_plot2.add_subplot(1, 2, 1)
-    ax.plot(x_arr2, history2['loss'], '-o', label='Train loss')
-    ax.plot(x_arr2, history2['val_loss'], '--<', label='Validation loss')
+    ax.plot(x_arr2, hist2['loss'], '-o', label='Train loss')
+    ax.plot(x_arr2, hist2['val_loss'], '--<', label='Validation loss')
     ax.legend(fontsize=15)
     ax.set_xlabel('Epoch', size=15)
     ax.set_ylabel('Loss', size=15)
     ax = fig_plot2.add_subplot(1, 2, 2)
-    ax.plot(x_arr2, history2['accuracy'], '-o', label='Train acc.')
-    ax.plot(x_arr2, history2['val_accuracy'], '--<',label='Validation acc.')
+    ax.plot(x_arr2, hist2['accuracy'], '-o', label='Train acc.')
+    ax.plot(x_arr2, hist2['val_accuracy'], '--<',label='Validation acc.')
     ax.legend(fontsize=15)
     ax.set_xlabel('Epoch', size=15)
     ax.set_ylabel('Accuracy', size=15)
