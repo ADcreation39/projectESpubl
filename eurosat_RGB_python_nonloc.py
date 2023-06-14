@@ -257,14 +257,14 @@ print(hist.history.keys())
 history = hist.history
 print("Produzione e salvataggio dei plot di loss e accuracy")
 x_arr = np.arange(len(history['loss'])) + 1
-fig = plt.figure(figsize=(12, 4))
-ax = fig.add_subplot(1, 2, 1)
+fig_plot = plt.figure(figsize=(12, 4))
+ax = fig_plot.add_subplot(1, 2, 1)
 ax.plot(x_arr, history['loss'], '-o', label='Train loss')
 ax.plot(x_arr, history['val_loss'], '--<', label='Validation loss')
 ax.legend(fontsize=15)
 ax.set_xlabel('Epoch', size=15)
 ax.set_ylabel('Loss', size=15)
-ax = fig.add_subplot(1, 2, 2)
+ax = fig_plot.add_subplot(1, 2, 2)
 ax.plot(x_arr, history['accuracy'], '-o', label='Train acc.')
 ax.plot(x_arr, history['val_accuracy'], '--<',label='Validation acc.')
 ax.legend(fontsize=15)
@@ -300,17 +300,17 @@ if choice==1:
     
     history = hist.history
     print("Produzione e salvataggio dei plot di loss e accuracy")
-    x_arr = np.arange(len(history['loss'])) + 1
-    fig = plt.figure(figsize=(12, 4))
-    ax = fig.add_subplot(1, 2, 1)
-    ax.plot(x_arr, history['loss'], '-o', label='Train loss')
-    ax.plot(x_arr, history['val_loss'], '--<', label='Validation loss')
+    x_arr2 = np.arange(len(history['loss'])) + 1
+    fig_plot2 = plt.figure(figsize=(12, 4))
+    ax = fig_plot2.add_subplot(1, 2, 1)
+    ax.plot(x_arr2, history['loss'], '-o', label='Train loss')
+    ax.plot(x_arr2, history['val_loss'], '--<', label='Validation loss')
     ax.legend(fontsize=15)
     ax.set_xlabel('Epoch', size=15)
     ax.set_ylabel('Loss', size=15)
-    ax = fig.add_subplot(1, 2, 2)
-    ax.plot(x_arr, history['accuracy'], '-o', label='Train acc.')
-    ax.plot(x_arr, history['val_accuracy'], '--<',label='Validation acc.')
+    ax = fig_plot2.add_subplot(1, 2, 2)
+    ax.plot(x_arr2, history['accuracy'], '-o', label='Train acc.')
+    ax.plot(x_arr2, history['val_accuracy'], '--<',label='Validation acc.')
     ax.legend(fontsize=15)
     ax.set_xlabel('Epoch', size=15)
     ax.set_ylabel('Accuracy', size=15)
@@ -332,6 +332,11 @@ print("Test accuracy: {}".format(scores[1]))
 outfile=open("test_loss_acc.txt", "w")
 outfile.write("Test loss : {}\n".format(scores[0]))
 outfile.write("Test accuracy: {}\n".format(scores[1]))
+outfile.write("Batch size: {}\n".format(BATCHSIZE))
+if choice==0:
+    outfile.write("Number of epochs: {}\n".format(NUMEPOCHS))
+else
+    outfile.write("Number of epochs: {}\n".format(NUMEPOCHS+ADDITIONALEPOCHS))
 outfile.close()
 
 
