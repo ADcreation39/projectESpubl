@@ -39,7 +39,7 @@ if device_name != '/device:GPU:0':
     raise SystemError('GPU device not found')
 print('Found GPU at: {}'.format(device_name))
 #Show which devices the operations and tensors are assigned to. Enabling device placement logging causes any Tensor allocations or operations to be printed.
-tf.debugging.set_log_device_placement(True)
+#tf.debugging.set_log_device_placement(True)
 
 
 # In[7]:
