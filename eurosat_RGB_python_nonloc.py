@@ -401,9 +401,9 @@ for i,(image,label) in enumerate(ds_M_results):
         predicted_string='SeaLake'
                             
     if predicted_label[i]==label:
-       ax.text(0.5, -0.15, '{:s} ({:d})\nProb={:.0f}%'.format(predicted_string, predicted_label[i], label_probabilities[i]*100), size=16, horizontalalignment='center',verticalalignment='center', transform=ax.transAxes, fontsize=9, fontweight='bold', color='green')
+       ax.text(0.5, -0.15, '{:s} ({:d})\nProb={:.0f}%'.format(predicted_string, predicted_label[i], label_probabilities[i]*100), horizontalalignment='center',verticalalignment='center', transform=ax.transAxes, fontsize=9, fontweight='bold', color='green')
     else:
-       ax.text(0.5, -0.15, '{:s} ({:d})\nProb={:.0f}%'.format(predicted_string, predicted_label[i], label_probabilities[i]*100), size=16, horizontalalignment='center',verticalalignment='center', transform=ax.transAxes, fontsize=9, fontweight='bold', color='red')
+       ax.text(0.5, -0.15, '{:s} ({:d})\nProb={:.0f}%'.format(predicted_string, predicted_label[i], label_probabilities[i]*100), horizontalalignment='center',verticalalignment='center', transform=ax.transAxes, fontsize=9, fontweight='bold', color='red')
 plt.tight_layout()
 plt.savefig("samples_from_test.pdf", format="pdf", bbox_inches="tight")
 
@@ -462,7 +462,7 @@ for i,(image,label) in enumerate(ds_results):
             predicted_string='River'
         else:
             predicted_string='SeaLake'
-        ax.text(0.5, -0.15, '{:s} ({:d})\nProb={:.0f}%'.format(predicted_string, predicted_label[i], label_probabilities[i]*100), size=16, horizontalalignment='center',verticalalignment='center', transform=ax.transAxes, fontsize=9, fontweight='bold', color='red')
+        ax.text(0.5, -0.15, '{:s} ({:d})\nProb={:.0f}%'.format(predicted_string, predicted_label[i], label_probabilities[i]*100), horizontalalignment='center',verticalalignment='center', transform=ax.transAxes, fontsize=9, fontweight='bold', color='red')
         counter += 1
     if counter == K: 
         break
